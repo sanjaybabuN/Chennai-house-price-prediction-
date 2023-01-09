@@ -1,0 +1,3 @@
+data = pd.read_csv("../input/chennai-housing-sales-price/Chennai houseing sale.csv")
+pd.set_option('display.max_columns', None)
+data.head(3)
