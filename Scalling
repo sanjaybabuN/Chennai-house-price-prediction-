@@ -1,0 +1,2 @@
+pd.DataFrame(X_train, columns=X_train.columns).plot.box(figsize=(20,5), rot=90)
+plt.show()
