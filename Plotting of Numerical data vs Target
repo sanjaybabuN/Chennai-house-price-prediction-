@@ -1,0 +1,16 @@
+plt.figure(figsize=(20, 10), dpi=150)
+
+plt.subplot(2,2,1)
+sns.regplot(data.qs_overall, data.total_price, scatter_kws={"color": "green"}, line_kws={"color": "red"})
+
+plt.subplot(2,2,2)
+sns.regplot(data.int_sqft, data.total_price, scatter_kws={"color": "blue"}, line_kws={"color": "red"})
+
+plt.subplot(2,2,3)
+sns.regplot(data.dist_mainroad, data.total_price, scatter_kws={"color": "grey"}, line_kws={"color": "red"})
+
+plt.subplot(2,2,4)
+sns.regplot(data.property_age, data.total_price, scatter_kws={"color": "orange"}, line_kws={"color": "red"})
+
+plt.suptitle("Continous numerical variable VS Total price", fontsize=18)
+plt.show()
