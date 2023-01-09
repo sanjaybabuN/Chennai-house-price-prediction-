@@ -1,0 +1,22 @@
+plt.figure(figsize=(25, 13), dpi=150)
+
+plt.subplot2grid((2,6),(0,0))
+sns.regplot(data.n_bedroom, data.total_price, scatter_kws={"color": "blue"}, line_kws={"color": "red"})
+
+plt.subplot2grid((2,6),(0,1))
+sns.regplot(data.n_bathroom, data.total_price, scatter_kws={"color": "grey"}, line_kws={"color": "red"})
+
+plt.subplot2grid((2,6),(0,2))
+sns.regplot(data.n_room, data.total_price, scatter_kws={"color": "orange"}, line_kws={"color": "red"})
+
+plt.subplot2grid((2,6),(0,3),colspan=2)
+sns.regplot(data.qs_rooms, data.total_price, scatter_kws={"color": "purple"}, line_kws={"color": "red"})
+
+plt.subplot2grid((2,6),(1,0),colspan=2)
+sns.regplot(data.qs_bathroom, data.total_price, scatter_kws={"color": "green"}, line_kws={"color": "red"})
+
+plt.subplot2grid((2,6),(1,2),colspan=2)
+sns.regplot(data.qs_bedroom, data.total_price, line_kws={"color": "red"})
+
+plt.suptitle("Descrete numerical variable VS Total price", fontsize=18)
+plt.show()
