@@ -1,0 +1,64 @@
+plt.figure(figsize=(30, 18), dpi=200)
+
+plt.subplot(5,4,1)
+sns.histplot(data.area, linewidth=0,kde=True)
+
+plt.subplot(5,4,2)
+sns.histplot(data.sale_cond, linewidth=0,kde=True)
+
+plt.subplot(5,4,3)
+sns.histplot(data.park_facil, linewidth=0,kde=True)
+
+plt.subplot(5,4,4)
+sns.histplot(data.buildtype, linewidth=0,kde=True)
+
+plt.subplot(5,4,5)
+sns.histplot(data.utility_avail, linewidth=0,kde=True)
+
+plt.subplot(5,4,6)
+sns.histplot(data.street, linewidth=0,kde=True)
+
+plt.subplot(5,4,7)
+sns.histplot(data.mzzone, linewidth=0,kde=True)
+
+plt.subplot(5,4,8)
+sns.distplot(data.property_age)
+
+plt.subplot(5,4,9)
+sns.distplot(data.int_sqft)
+
+plt.subplot(5,4,10)
+sns.distplot(data.dist_mainroad)
+
+plt.subplot(5,4,11)
+sns.distplot(data.n_bedroom)
+
+plt.subplot(5,4,12)
+sns.distplot(data.n_bathroom)
+
+plt.subplot(5,4,13)
+sns.distplot(data.n_room)
+
+plt.subplot(5,4,14)
+sns.distplot(data.qs_rooms)
+
+plt.subplot(5,4,15)
+sns.distplot(data.qs_bathroom)
+
+plt.subplot(5,4,16)
+sns.distplot(data.qs_bedroom)
+
+plt.subplot(5,4,17)
+sns.distplot(data.qs_overall)
+
+plt.subplot(5,4,18)
+sns.distplot(data.reg_fee)
+
+plt.subplot(5,4,19)
+sns.distplot(data.commis)
+
+plt.subplot(5,4,20)
+sns.distplot(data.sales_price)
+
+plt.suptitle("Distribution of Data column wise", fontsize=20)
+plt.show()
