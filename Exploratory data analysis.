@@ -1,0 +1,2 @@
+plt.figure(figsize=(18,10), dpi=150)
+sns.heatmap(data.corr(method='pearson'), cbar=False, annot=True, fmt='.1f', linewidth=0.2, cmap='coolwa
