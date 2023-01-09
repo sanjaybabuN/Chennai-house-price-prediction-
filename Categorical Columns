@@ -1,0 +1,25 @@
+plt.figure(figsize=(25, 13), dpi=150)
+
+plt.subplot2grid((2,6),(0,0),colspan=2)
+sns.barplot(x=data.area,y=data.sales_price,order=data.groupby('area')['sales_price'].mean().reset_index().sort_values('sales_price')['area'])
+
+plt.subplot2grid((2,6),(0,2),colspan=2)
+sns.barplot(x=data.sale_cond,y=data.total_price,order=data.groupby('sale_cond')['total_price'].mean().reset_index().sort_values('total_price')['sale_cond'])
+
+plt.subplot2grid((2,6),(0,4),colspan=2)
+sns.barplot(x=data.mzzone,y=data.total_price,order=data.groupby('mzzone')['total_price'].mean().reset_index().sort_values('total_price')['mzzone'])
+
+plt.subplot2grid((2,6),(1,0),colspan=2)
+sns.barplot(x=data.utility_avail,y=data.total_price,order=data.groupby('utility_avail')['total_price'].mean().reset_index().sort_values('total_price')['utility_avail'])
+
+plt.subplot2grid((2,6),(1,2))
+sns.barplot(x=data.buildtype,y=data.total_price,order=data.groupby('buildtype')['total_price'].mean().reset_index().sort_values('total_price')['buildtype'])
+
+plt.subplot2grid((2,6),(1,3))
+sns.barplot(x=data.street,y=data.total_price,order=data.groupby('street')['total_price'].mean().reset_index().sort_values('total_price')['street'])
+
+plt.subplot2grid((2,6),(1,4))
+sns.barplot(x=data.park_facil,y=data.total_price,order=data.groupby('park_facil')['total_price'].mean().reset_index().sort_values('total_price')['park_facil'])
+
+plt.suptitle("Commision & Registration fee VS Total price", fontsize=18)
+plt.show()
