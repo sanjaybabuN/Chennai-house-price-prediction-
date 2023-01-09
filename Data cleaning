@@ -1,0 +1,90 @@
+# Removing all the null values
+data.dropna(inplace=True)
+
+# Renaming all the column names in lowercase letters
+data.columns = data.columns.str.lower()
+
+
+# Renaming all the string in area column names in lowercase letters
+data.area = data.area.str.lower()
+
+# Correcting the spelling mistakes in area columns
+data.area = data.area.replace({'velchery':'velachery', 
+                       'kknagar':'kk nagar', 
+                       'tnagar':'t nagar', 
+                       'chormpet':'chrompet', 
+                       'chrompt':'chrompet', 
+                       'chrmpet':'chrompet', 
+                       'ana nagar':'anna nagar', 
+                       'ann nagar':'anna nagar',
+                       'karapakam':'karapakkam', 
+                       'adyr':'adyar'})
+
+
+# Renaming all the string in sale_cond column names in lowercase letters
+data.sale_cond = data.sale_cond.str.lower()
+
+# Correcting the spelling mistakes in sale_cond columns
+data.sale_cond = data.sale_cond.replace({'adj land':'adjland', 
+                       'normal sale':'normal sale',
+                       'partiall':'partial',
+                       'ab normal':'abnormal'})
+
+
+# Renaming all the string in park_facil column names in lowercase letters
+data.park_facil = data.park_facil.str.lower()
+
+# Correcting the spelling mistakes in park_facil columns
+data.park_facil = data.park_facil.replace({'noo':'no'})
+
+
+# Renaming all the string in buildtype column names in lowercase letters
+data.buildtype = data.buildtype.str.lower()
+
+# Correcting the spelling mistakes in buildtype columns
+data.buildtype = data.buildtype.replace({'comercial':'commercial', 
+                       'others':'other'})
+
+
+# Renaming all the string in utility_avail column names in lowercase letters
+data.utility_avail = data.utility_avail.str.lower()
+
+# Correcting the spelling mistakes in utility_avail columns
+data.utility_avail = data.utility_avail.replace({'all pub':'allpub',
+                                             'nosewr':'nosewa'})
+                                            
+                                            
+# Renaming all the string in street column names in lowercase letters
+data.street = data.street.str.lower()
+
+# Correcting the spelling mistakes in street columns
+data.street = data.street.replace({'pavd':'paved', 
+                       'noaccess':'no access'})
+
+
+# Renaming all the string in mzzone column names in lowercase letters
+data.mzzone = data.mzzone.str.lower()
+
+# Fixing the correct Data Type of columns
+data.n_bedroom = data.n_bedroom.astype(int)
+data.n_bathroom = data.n_bathroom.astype(int)
+
+# Correcting Date columnd from object to daterime format
+data.date_sale = pd.to_datetime(data.date_sale, format='%d-%m-%Y')
+data.date_build = pd.to_datetime(data.date_build, format='%d-%m-%Y')
+
+# Creating property_age column which deternine how old the property id
+data['property_age'] = pd.DatetimeIndex(data.date_sale).year - pd.DatetimeIndex(data.date_build).year
+
+# Creating total_price column by adding 'reg_fee', 'commis', 'sales_price' columns
+data['total_price'] = pd.DataFrame(data.reg_fee	+ data.commis	+ data.sales_price)
+
+# Rearranging the columns of dataframe 
+data = data.reindex(columns = ['prt_id', 'area', 'sale_cond', 'park_facil',
+       'buildtype', 'utility_avail', 'street', 'mzzone', 
+       'date_build', 'date_sale', 'property_age', 
+       'int_sqft', 'dist_mainroad', 'n_bedroom','n_bathroom', 'n_room', 
+       'qs_rooms', 'qs_bathroom', 'qs_bedroom', 'qs_overall', 
+       'reg_fee', 'commis', 'sales_price', 'total_price'])
+
+data.head(3)
