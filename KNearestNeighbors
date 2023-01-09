@@ -1,0 +1,39 @@
+rmse_val = []
+for K in range(10):
+    K = K+1
+    model = neighbors.KNeighborsRegressor(n_neighbors = K)
+    model.fit(X_train_mm, y_train)
+    pred=model.predict(X_test_mm)
+    error = sqrt(mean_squared_error(y_test,pred))
+    rmse_val.append(error)
+curve = pd.DataFrame(rmse_val)
+
+rmse_val1 = []
+for K in range(10):
+    K = K+1
+    model = neighbors.KNeighborsRegressor(n_neighbors = K)
+    model.fit(X_train_ss, y_train)
+    pred=model.predict(X_test_ss)
+    error = sqrt(mean_squared_error(y_test,pred))
+    rmse_val1.append(error)
+curve1 = pd.DataFrame(rmse_val1)
+
+print('Orange and Blue depict RSME for MinMaxScaler and blue')
+plt.figure(figsize=(12,7))
+plt.plot(curve)
+plt.plot(curve1)
+plt.show()
+knn = KNeighborsRegressor(n_neighbors=100)
+knn.fit(X_train, y_train)
+y_predknn = knn.predict(X_test)
+print('R2- SCORE:', metrics.r2_score(y_test,y_predknn))
+
+knn = KNeighborsRegressor(n_neighbors=3)
+knn.fit(X_train_mm, y_train)
+y_predknn_mm = knn.predict(X_test_mm)
+print('R2- SCORE(Minmaxscaled):', metrics.r2_score(y_test,y_predknn_mm))
+
+knn = KNeighborsRegressor(n_neighbors=4)
+knn.fit(X_train_ss, y_train)
+y_predknn_ss = knn.predict(X_test_ss)
+print('R2- SCORE(Standardscaler):', metrics.r2_score(y_test,y_predknn_ss))
