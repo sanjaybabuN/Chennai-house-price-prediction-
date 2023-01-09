@@ -1,0 +1,12 @@
+dt = DecisionTreeRegressor()
+dt.fit(X_train, y_train)
+y_pred_dt = dt.predict(X_test)
+print('R2- SCORE:', metrics.r2_score(y_test,y_pred_dt))
+
+dt.fit(X_train_mm, y_train)
+y_pred_dtmm = dt.predict(X_test_mm)
+print('R2- SCORE(Minmaxscaled):', metrics.r2_score(y_test,y_pred_dtmm))
+
+dt.fit(X_train_ss, y_train)
+y_pred_dtss = dt.predict(X_test_ss)
+print('R2- SCORE(Standardscaler):', metrics.r2_score(y_test,y_pred_dtss))
